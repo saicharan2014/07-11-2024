@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form  onsubmit="check(event)">
+<input type="text" name="" id="name_ip">
+<input type="email" name="" id="email_ip">
+<input type="password" name="" id="pw_ip" >
+<button>Submit</button>
+    </form>
+    <p></p>
+    <script >
+
+
+      function check(event){
+        event.preventDefault()
+let nameip=document.querySelector("#name_ip").value.trim()
+let emailip=document.querySelector("#email_ip").value.trim()
+let pwip=document.querySelector("#pw_ip").value.trim()
+let error=document.querySelector("p")
+let val=true
+
+let name_pattern=/^[a-zA-Z0-9 ]+$/
+let email_pattern=/^[a-zA-Z0-9+-_]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/
+let pwd_pattern=/^[a-zA-Z0-9]{8,}$/
+if(!name_pattern.test(nameip)){
+error.textContent="name"
+error.style.color="red"
+val=false
+
+
+}
+if(!email_pattern.test(emailip)){
+    error.textContent="email"
+error.style.color="red"
+val=false
+
+}
+if(!pwd_pattern.test(pwip)){
+    error.textContent="pw"
+error.style.color="red"
+val=false
+
+}
+
+if(val){
+    document.querySelector("#name_ip").value=""
+document.querySelector("#email_ip").value=""
+document.querySelector("#pw_ip").value=""
+  error.textContent="login sucessfully"
+error.style.color="green"
+}
+
+
+      }
+    </script>
+</body>
+</html>
